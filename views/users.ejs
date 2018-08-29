@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Users</title>
+	</head>
+
+	<body>
+
+		<h3>List of users</h3>
+
+		<table>
+			<% for(var i=0; i < users.length; i++) { %>
+			   <li> <strong>User <%= i+1 %></strong>
+			    	<ul><em>Name</em> <%= users[i].firstname %></ul>
+			    	<ul><em>Last name </em><%= users[i].lastname %></ul>
+			    	<ul><em>Email </em><%= users[i].email %></ul>
+			   </li>
+			<% } %>
+		</table>
+
+	</body>
+</html>
