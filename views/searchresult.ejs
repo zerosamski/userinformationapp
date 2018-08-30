@@ -1,12 +1,9 @@
-<!DOCTYPE html>
+<% include partials/header %>
 
-<html>
-	<head>
-		<title>Search results</title>
-	</head>
-
-	<body>
-		<h3>Search results</h3>
+<div class="userlist">
+		<div class="userlisttitle">
+			<h3>Search results</h3>
+		</div>
 
 		<% var searchreq = (searchuser.searchuser).toLowerCase() %>
 		<% var userfound = false %>
@@ -14,6 +11,7 @@
 		<% for(var i=0; i < users.length; i++) { %>
 			<% if (searchreq === (users[i].firstname).toLowerCase() || searchreq === (users[i].lastname).toLowerCase()) { %>
 				<li> The user you searched for is:
+				</li>
 				  <ul><em>Name</em> <%= users[i].firstname %></ul>
 				  <ul><em>Last name </em><%= users[i].lastname %></ul>
 				  <ul><em>Email </em><%= users[i].email %></ul>
@@ -25,5 +23,8 @@
 		<% if (!userfound) { %>
 				Sorry, the user you searched for doesn't exist in our database.
 			<% } %>
-	</body>
-</html>
+
+</div>
+
+<% include partials/footer %>
+

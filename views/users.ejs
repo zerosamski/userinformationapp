@@ -1,15 +1,10 @@
-<!DOCTYPE html>
-
-<html>
-	<head>
-		<title>Users</title>
-	</head>
-
-	<body>
-
+<% include partials/header %>
+	
+	<div class="userlist">
+		<div class="userlisttitle">
 		<h3>List of users</h3>
+		</div>
 
-		<table>
 			<% for(var i=0; i < users.length; i++) { %>
 			   <li> <strong>User <%= i+1 %></strong>
 			    	<ul><em>Name</em> <%= users[i].firstname %></ul>
@@ -17,7 +12,6 @@
 			    	<ul><em>Email </em><%= users[i].email %></ul>
 			   </li>
 			<% } %>
-		</table>
+		</div>
 
-	</body>
-</html>
+<% include partials/footer %>
