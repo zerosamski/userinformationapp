@@ -9,7 +9,9 @@
 		<% var userfound = false %>
 
 		<% for(var i=0; i < users.length; i++) { %>
-			<% if (searchreq === (users[i].firstname).toLowerCase() || searchreq === (users[i].lastname).toLowerCase()) { %>
+			<% var fname = (users[i].firstname).toLowerCase(); %>
+			<% var lname = (users[i].lastname).toLowerCase(); %>
+			<% if (fname.includes(searchreq.toLowerCase()) || lname.includes(searchreq.toLowerCase())) { %>
 				<li> The user you searched for is:
 				</li>
 				  <ul><em>Name</em> <%= users[i].firstname %></ul>

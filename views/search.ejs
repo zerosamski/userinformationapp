@@ -1,13 +1,63 @@
 <% include partials/header %>
 
+<script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+
 <div class="search">
 
 	<form class="form-inline" action="/search" method="POST">
   <div class="form-group mx-sm-3 mb-2">
-    <input type="text" name="searchuser" class="form-control" id="inputPassword2" placeholder="Search for a user">
+    <input type="text" name="searchuser" class="form-control" id="target" placeholder="Search for a user">
   </div>
   <button type="submit" class="btn btn-secondary mb-2">Search!</button>
 </form>
 </div>
+
+
+<li id="empty" style="list-style: none">
+	<ul id="results" style="list-style: none">
+</ul>
+</li>
+
+<script>
+	$("#target").keyup(function () {
+		searchterm = $(this).val();
+		console.log(searchterm)
+		$("#results").html('<li></li>')
+
+		if (searchterm) {
+	        $.ajax({
+				url: "https://raw.githubusercontent.com/zerosamski/userinformationapp/master/users.json",
+				dataType: "json",
+				success: function(response) {
+					data = response
+					for(var i = 0; i < data.length; i++) {
+						fname = (data[i].firstname).toLowerCase();
+						lname = data[i].lastname.toLowerCase();
+						if (fname.includes(searchterm.toLowerCase()) || lname.includes(searchterm.toLowerCase())) {
+							console.log(data[i])
+							$("#results").append(`<li><strong><User:</strong><ul><em>Firstname:</em> ${data[i].firstname},</ul> <ul><em>Lastname:</em> ${data[i].lastname},</ul><ul> <em>email: </em>${data[i].email}</ul></li>`);
+						}
+					}
+				}
+						
+			})
+		}
+
+	})
+
+
+
+
+	
+
+
+
+</script>
+
+
+
+
 
 <% include partials/footer %>
