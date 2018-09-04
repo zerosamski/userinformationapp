@@ -31,12 +31,13 @@ app.get("/users", function(req, res) {
 
 //render search page
 app.get("/search", function(req, res) {
-	res.render("search");
-});
+	res.render("search")
+})
 
 //searching for users
 app.post("/search", function(req, res) {
 	searchuser = req.body
+
 	res.render("searchresult", {searchuser: searchuser,
 								users: users})
 });
@@ -73,4 +74,6 @@ app.post("/adduser", function(req, res) {
 app.listen(3000, function() {
 	console.log("The server is running on port 3000");
 });
+
+
 
