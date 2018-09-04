@@ -21,12 +21,17 @@
 </li>
 
 <script>
+
+
+	var timer = 0;
+	console.log(Date.now)
+
 	$("#target").keyup(function () {
 		searchterm = $(this).val();
 		console.log(searchterm)
-		$("#results").html('<li></li>')
+		$("#results").html('<li></li>')	
 
-		if (searchterm) {
+		if (searchterm && ((Date.now() - timer > 300))) {
 	        $.ajax({
 				url: "https://raw.githubusercontent.com/zerosamski/userinformationapp/master/users.json",
 				dataType: "json",
@@ -38,14 +43,25 @@
 						if (fname.includes(searchterm.toLowerCase()) || lname.includes(searchterm.toLowerCase())) {
 							console.log(data[i])
 							$("#results").append(`<li><strong><User:</strong><ul><em>Firstname:</em> ${data[i].firstname},</ul> <ul><em>Lastname:</em> ${data[i].lastname},</ul><ul> <em>email: </em>${data[i].email}</ul></li>`);
+						timer = Date.now();
+						console.log(timer)
 						}
 					}
 				}
 						
 			})
+		} else {$("#results").append(`<li>Too many requests to the server!</li>`)
+
 		}
+		
 
 	})
+
+
+
+
+
+
 
 
 
