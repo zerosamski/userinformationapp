@@ -4,16 +4,16 @@ module.exports = function (filename, callback) {
 
 // should then read that file, then parse the JSON
 	var fs = require('fs');
-	var obj;
+	var parsed;
 	fs.readFile(filename, function (err, data) {
 			if (err) {
 				throw err;    
 			}
 
-			obj = JSON.parse(data);
+			parsed = JSON.parse(data);
 	
 			 // and then call the callback function and pass the parsed JSON to it
-			callback(obj)
+			callback(parsed)
 	});
 	
 

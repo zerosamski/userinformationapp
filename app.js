@@ -5,9 +5,11 @@ var bodyParser = require('body-parser')
 const jsonReader = require('./json-file-reader.js')
 let users = jsonReader("users.json", callback);
 
-function callback(obj) {
-	users = obj;
+function callback(parsed) {
+	users = parsed;
 }
+
+console.log(users) //undefined? but still works?
 
 // let users = jsonReader('./users.json');
 
